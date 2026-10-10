@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program37
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            int n = 12;              // Пример числа: 00001100 (3‑й бит установлен)
+            int bitIndex = 3;       // Проверяем 3‑й бит (считая с 0)
+
+            // Создаём маску: 1 << 3 = 8 → 00001000
+            int mask = 1 << bitIndex;
+
+            // Проверяем, установлен ли бит
+            bool isBitSet = (n & mask) != 0;
+
+            // Для наглядности выводим двоичное представление (8 младших бит)
+            string binN = Convert.ToString(n, 2).PadLeft(8, '0');
+            string binMask = Convert.ToString(mask, 2).PadLeft(8, '0');
+            string binResult = Convert.ToString(n & mask, 2).PadLeft(8, '0');
+
+            Console.WriteLine($"n = {n} → двоичное: {binN}");
+            Console.WriteLine($"Маска (1 << {bitIndex}) = {mask} → двоичное: {binMask}");
+            Console.WriteLine($"Результат (n & маска) = {binResult}");
+            Console.WriteLine($"3‑й бит установлен? {isBitSet}");
+        }
+    }
+}
